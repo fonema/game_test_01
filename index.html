@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>My First JavaScript</title>
+    <script>
+      function initElement() {
+        var p = document.getElementById("foo");
+        // NOTE: showAlert(); or showAlert(param); will NOT work here.
+        // Must be a reference to a function name, not a function call.
+        p.onclick = showAlert;
+      };
+
+      function showAlert(event) {
+        alert("onclick Event detected!");
+      }
+	  
+    </script>
+	
+    <style>
+      #foo {
+        border: solid blue 2px;
+      }
+	  
+	  button {
+		font-family: courier;
+		text-align: center;
+		font-size: 28px;	
+		font-weight: bold; 
+	  }
+	  
+	  p {
+		font-family: courier;
+		text-align: left;
+		font-size: 18px;	
+		font-weight: bold; 
+	  }
+
+	  input {
+		font-family: courier;
+		text-align: left;
+		font-size: 18px;	
+		font-weight: bold; 
+	  }
+    </style>
+</head>
+  
+<body onload="initBody()">
+
+<script>
+	function calculaLapso(tsInicio, tsFin) {
+	  return tsFin - tsInicio;
+	}
+
+	function setInnerH(obj) {
+	  document.getElementById(obj).innerHTML = new Date().getTime(); 
+	}
+
+	function setAmountInInnerH(obj, str) {
+	  document.getElementById(obj).innerHTML = str; 
+	}
+
+	function displayTimeStamp() {
+	  return new Date().getTime();
+	}
+
+	function setTodosInners(obj, obj2, obj3) {
+		str = new Date().getTime(); 
+		setAmountInInnerH(obj, str); 
+		setAmountInInnerH(obj2, str); 
+		setAmountInInnerH(obj3, str); 
+	}
+
+	  function initBody(d) {
+		d = new Date().getTime();
+		//document.getElementById("demo2").innerHTML = d;
+		var str = ""; 
+		str = d.toString(); 
+		return d; 
+	  }
+	  
+	  function f_CargarBotonesDeNumeros(){
+		document.getElementById('btn1').innerHTML = document.getElementById('demo3').innerHTML[0]; //" - " + document.getElementById('demo3').innerHTML[0] + " - "; 
+		document.getElementById('btn2').innerHTML = document.getElementById('demo3').innerHTML[1]; //" - " + document.getElementById('demo3').innerHTML[1] + " - "; 
+		document.getElementById('btn3').innerHTML = document.getElementById('demo3').innerHTML[2]; //" - " + document.getElementById('demo3').innerHTML[2] + " - "; 
+		document.getElementById('btn4').innerHTML = document.getElementById('demo3').innerHTML[3]; //" - " + document.getElementById('demo3').innerHTML[3] + " - "; 
+		document.getElementById('btn5').innerHTML = document.getElementById('demo3').innerHTML[4]; //" - " + document.getElementById('demo3').innerHTML[4] + " - "; 
+		document.getElementById('btn6').innerHTML = document.getElementById('demo3').innerHTML[5]; //" - " + document.getElementById('demo3').innerHTML[5] + " - "; 
+		
+		document.getElementById('btn1').disabled = false;
+		document.getElementById('btn2').disabled = false;
+		document.getElementById('btn3').disabled = false;
+		document.getElementById('btn4').disabled = false;
+		document.getElementById('btn5').disabled = false;
+		document.getElementById('btn6').disabled = false;
+		
+		document.getElementById('cmdCargar').disabled = true; 
+	  }
+	  
+	  function f_Reiniciar(){
+		//document.getElementById('demo').innerHTML = ""; 
+		//document.getElementById('demo2').innerHTML = ""; 
+		//alert ("f_Reiniciar ejecutada"); 
+		f_CargarBotonesDeNumeros(); 
+		//document.getElementById('pResultado').innerHTML = ""; 
+		document.getElementById('pResultado').value = ""; 
+	  }
+	  
+	  function clkNumeros(id){
+		//document.getElementById('pResultado').innerHTML = document.getElementById('pResultado').innerHTML + id.innerHTML ; 
+		document.getElementById('pResultado').value = document.getElementById('pResultado').value + id.innerHTML ; 
+		id.innerHTML = "X"; 
+		id.disabled = true; 
+	  }
+
+	  function boolEstaOrdenada(str){
+		var bRes = true; 
+		for (var i = 0; i < 5; i++) {
+			if (str[i] > str[i+1]){
+				//Resultado incorrecto. Devolver FALSE
+				alert("INcorrecto!");
+				return false; 
+			}
+		}
+		alert("Res OK!");
+		return bRes; 
+	  }
+
+</script>
+
+<hr>
+<h2>El juego de ORDENAR numeritos</h2>
+<hr>
+
+<!--
+<p id="demo">Aqui sale 'getTime'</p>
+<button type="button" onclick="document.getElementById('demo').innerHTML = new Date().getTime()"> Click me for 'getTime()' </button>
+<hr>
+<p id="pResultado">------</p>
+-->
+<p id="demo2" hidden>XXXXXXXXXXXXXXXX</p>
+<p id="demo3">XXXXXXXXXXXXXXXX</p>
+
+
+<form action="./action/action.php" method="post">
+  <p>Respuesta a enviar: <input type="button" id="pResultado" name="pResultado" size="50" disabled value=""></p>
+  <p>  <input type="submit" value="ENVIAR">  </p>
+</form>
+
+<script>
+var d = initBody(); 
+document.getElementById("demo2").innerHTML = d;
+var str = d.toString(); 
+document.getElementById("demo3").innerHTML = str.substr((str.length-6), (str.length-1));
+</script>
+
+<!--
+<p id="btn1" onclick="clkNumeros(id)"> - X - </p>
+<p id="btn2" onclick="clkNumeros(id)"> - X - </p>
+<p id="btn3" onclick="clkNumeros()"> - X - </p>
+<p id="btn4" onclick="clkNumeros()"> - X - </p>
+<p id="btn5" onclick="clkNumeros()"> - X - </p>
+<p id="btn6" onclick="clkNumeros()"> - X - </p>
+-->
+
+<hr>
+<button type="button" id="cmdCargar" onclick="f_CargarBotonesDeNumeros()"> EMPEZAR </button>
+
+<hr>
+<button type="button" id="btn1" onclick="clkNumeros(this)"> X</button>
+<button type="button" id="btn2" onclick="clkNumeros(this)"> X</button>
+<button type="button" id="btn3" onclick="clkNumeros(this)"> X</button>
+<button type="button" id="btn4" onclick="clkNumeros(this)"> X</button>
+<button type="button" id="btn5" onclick="clkNumeros(this)"> X</button>
+<button type="button" id="btn6" onclick="clkNumeros(this)"> X</button>
+
+<hr>
+<button type="button" id="cmdReiniciar" onclick="f_Reiniciar()">== REINICIAR ==</button>
+
+<hr>
+<button type="button" id="cmdComprobar" onclick="boolEstaOrdenada(document.getElementById('pResultado').value)">COMPROBAR</button>
+
+
+</body>
+</html>
