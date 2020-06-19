@@ -1,3 +1,43 @@
 	  #foo {
         border: solid blue 2px;
       }
+	  
+      h1 {
+		font-family: verdana; 
+		border: 5px blue; 
+	  }
+	  
+	  button {
+		font-family: courier;
+		text-align: center;
+		font-size: 48px;	
+		font-weight: bold; 
+		padding: 5; 
+	  }
+	  
+	  p {
+		font-family: courier;
+		text-align: left;
+		font-size: 18px;	
+		font-weight: bold; 
+	  }
+
+	div {
+	  border: 2px blue;
+	  background-color: #00f0ff;
+	  text-align: left;
+	}	  
+	
+	.MiDivBlanco {
+	  border: 2px white;
+	  background-color: white;
+	  text-align: center;
+	}	  		
+	
+	.MiDivRojoSuave {
+	  border: 2px white;
+	  background-color: #ffcc99;
+	  text-align: center;
+	  padding: 2px;
+	}	  	
+	

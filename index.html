@@ -5,28 +5,10 @@
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SORTING GAME</title>
+	<link rel="stylesheet" type="text/css" href="./css/css.css">
 	<script src="js/js.js"></script>
 	
-    <style>
-      h1 {
-		font-family: verdana; 
-		border: 5px blue; 
-	  }
-	  
-	  button {
-		font-family: courier;
-		text-align: center;
-		font-size: 48px;	
-		font-weight: bold; 
-		padding: 5; 
-	  }
-	  
-	  p {
-		font-family: courier;
-		text-align: left;
-		font-size: 18px;	
-		font-weight: bold; 
-	  }
+    <style type="text/css">
 
 	  input {
 		font-family: courier;
@@ -51,7 +33,7 @@
 </script>
 
 <hr>
-<h1>El juego de ORDENAR numeritos</h1>
+<h3 style="text-align: center; ">The SORTING game</h3>
 <hr>
 
 <!--
@@ -60,53 +42,67 @@
 <hr>
 <p id="pResultado">------</p>
 -->
-<p id="lblInstrucciones" >Ordena las cifras de menor a MAYOR: </p>
+<p hidden style="text-align: center; " id="lblInstrucciones" >Ordena las cifras de menor a MAYOR</p>
+<p hidden id="lblInstr" >Ordena las cifras de menor a MAYOR: </p>
+<h4 style="text-align: center; ">Ordena las cifras de menor a MAYOR</h4>
+
 <p id="demo2" hidden></p>
-<p id="demo3" style="color: red; font-size: 24px;">XXXXX</p>
+<p id="demo3" hidden style="color: red; font-size: 24px;">XXXXX</p>
 
 <hr>
 
-<p>Respuesta a enviar: </p>
-<form action="./action/action.php" method="post">
-  <p><input type="button" id="pResultado" name="pResultado" size="50" disabled ></p>
-  <p><input type="submit" id="btnEnviar" value="ENVIAR" disabled>  </p>
-</form>
+<!--
+Aqui div del form y el trozo de script de debajo
+-->
 
-<script>
-var d = initBody(); 
-document.getElementById("demo2").innerHTML = d;
-var str = d.toString(); 
-document.getElementById("demo3").innerHTML = str.substr((str.length-6), (str.length-1));
-</script>
 
-<hr>
-<button type="button" id="btnEmpezar" onclick="f_CargarBotonesDeNumeros()"> EMPEZAR ==> </button>
-<button type="button" id="btn1" onclick="clkNumeros(this)"> X</button>
-<button type="button" id="btn2" onclick="clkNumeros(this)"> X</button>
-<button type="button" id="btn3" onclick="clkNumeros(this)"> X</button>
-<button type="button" id="btn4" onclick="clkNumeros(this)"> X</button>
-<button type="button" id="btn5" onclick="clkNumeros(this)"> X</button>
-<button type="button" id="btn6" onclick="clkNumeros(this)"> X</button>
+<div class="MiDivRojoSuave" >
+	<button type="button" id="btnEmpezar" style="margin: 4px; " onclick="f_CargarBotonesDeNumeros()"> EMPEZAR </button>
+</div>
 
+
+<div class="MiDivRojoSuave" >
+	<button type="button" id="btn1" onclick="clkNumeros(this)"> X</button>
+	<button type="button" id="btn2" onclick="clkNumeros(this)"> X</button>
+	<button type="button" id="btn3" onclick="clkNumeros(this)"> X</button>
+	<button type="button" id="btn4" onclick="clkNumeros(this)"> X</button>
+	<button type="button" id="btn5" onclick="clkNumeros(this)"> X</button>
+	<button type="button" id="btn6" onclick="clkNumeros(this)"> X</button>
 <script> 
 	document.getElementById('btnEmpezar').disabled = false; 
 	f_DesactivarBotonesCifras();  
 </script>
-
-<div class="myDiv">
-  <h2><br></h2>
-<p id="nada1" ></p>
-<p id="nada2" ></p>
 </div>
 
-<p id="nada3" ></p>
-<p id="nada4" ></p>
+
+<!-- Forzar espacio: -->
+<!-- 
+<div class="myDiv">  <h2><br></h2> <p id="nada1" ></p> <p id="nada2" ></p> </div>
+-->
 
 <hr>
+
+<div style="text-align: center; padding: 2px; ">
+	<p  style="text-align: center; ">Tu respuesta: </p>
+	<form action="./action/action.php" method="post">
+	  <p style="text-align: center;" ><input type="button" id="pResultado" name="pResultado" size="50" disabled ></p>
+	  <p><input type="submit" id="btnEnviar" value="ENVIAR" disabled>  </p>
+	</form>
+</div> 
+
+<script>
+	var d = initBody(); 
+	document.getElementById("demo2").innerHTML = d;
+	var str = d.toString(); 
+	document.getElementById("demo3").innerHTML = str.substr((str.length-6), (str.length-1));
+</script>
+
+<hr>
+
+<div class="MiDivBlanco" style="text-align: center; "> 
 <button type="button" id="cmdReiniciar" onclick="f_Reiniciar()">= RESET =</button>
-
 <button type="button" id="cmdComprobar" onclick="boolEstaOrdenada(document.getElementById('pResultado').value)">COMPROBAR</button>
-
+</div> 
 
 </body>
 </html>
